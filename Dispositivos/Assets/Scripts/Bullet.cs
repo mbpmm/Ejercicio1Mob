@@ -14,6 +14,15 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.forward * Time.deltaTime * speed);
+        transform.Rotate(Vector3.up * Time.deltaTime * speed);
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag=="Player")
+        {
+            ScoreManager.instance.score += ScoreManager.instance.points;
+            Destroy(gameObject);
+        }
     }
 }

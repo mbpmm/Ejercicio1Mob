@@ -4,27 +4,26 @@ using UnityEngine;
 
 public class Creator : MonoBehaviour
 {
-    public List<GameObject> bulletList;
-    public GameObject bullet;
+    public List<GameObject> collectableList;
+    public GameObject collectable;
     public GameObject player;
+    public int cantCollectables;
+    public Vector3 pos;
+    public int max=23;
+
     // Start is called before the first frame update
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetButton("Disparar"))
+        for (int i = 0; i < cantCollectables; i++)
         {
-            bulletList.Add(CreateBullet());
+            collectableList.Add(CreateCollectable());
         }
     }
 
-    public GameObject CreateBullet()
+    public GameObject CreateCollectable()
     {
-        GameObject b = Instantiate(bullet,player.transform.position,Quaternion.identity);
+        pos = new Vector3(Random.Range(-max, max), 1, Random.Range(-max, max));
+        GameObject b = Instantiate(collectable, pos,Quaternion.identity);
 
         return b;
     }
