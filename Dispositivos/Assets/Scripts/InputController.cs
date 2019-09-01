@@ -13,10 +13,10 @@ public class InputController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         Mover();
-        if (Input.GetButtonDown("Saltar"))
+        if (Input.GetButtonDown("Saltar")&& rb.velocity.y==0)
         {
             Saltar();
         }

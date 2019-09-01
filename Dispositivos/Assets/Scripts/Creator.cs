@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Creator : MonoBehaviour
+public class Creator : GenericSingleton<Creator>
 {
     public List<GameObject> collectableList;
     public GameObject collectable;
-    public GameObject player;
     public int cantCollectables;
     public Vector3 pos;
     public int max=23;
