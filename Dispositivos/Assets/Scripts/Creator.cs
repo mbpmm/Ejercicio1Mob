@@ -21,7 +21,7 @@ public class Creator : GenericSingleton<Creator>
 
     public GameObject CreateCollectable()
     {
-        pos = new Vector3(Random.Range(-max, max), 1, Random.Range(-max, max));
+        pos = new Vector3(Random.Range(-max, max), -5, Random.Range(-max, max));
         GameObject b = Instantiate(collectable, pos,Quaternion.identity);
 
         return b;

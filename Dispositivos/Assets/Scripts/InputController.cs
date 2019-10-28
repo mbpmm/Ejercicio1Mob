@@ -15,11 +15,25 @@ public class InputController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+#if UNITY_EDITOR
         Mover();
         if (Input.GetButtonDown("Saltar")&& rb.velocity.y==0)
         {
             Saltar();
         }
+#endif
+
+#if UNITY_ANDROID && !UNITY_EDITOR
+		var gravity = new Vector3(
+            Input.acceleration.x,
+            Input.acceleration.z,
+            Input.acceleration.y
+        ) * g;
+
+        GetComponent<Rigidbody>().AddForce(gravity, ForceMode.Acceleration);
+#endif
+
+
     }
 
     private void Mover()
